@@ -13,12 +13,6 @@
         <module>hermes-outside-server</module>
     </modules>
 
-    <parent>
-        <groupId>com.ctfo</groupId>
-        <artifactId>zjxl-parent</artifactId>
-        <version>1.2</version>
-    </parent>
-
     <groupId>com.hermes</groupId>
     <artifactId>hermes</artifactId>
     <version>1.0.0</version>
