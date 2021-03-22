@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>hermes-admin-server</module>
+        <module>hermes-common-db</module>
+        <module>hermes-common-kit</module>
+        <module>hermes-gateway-server</module>
+        <module>hermes-outside-server</module>
+    </modules>
+
+    <parent>
+        <groupId>com.ctfo</groupId>
+        <artifactId>zjxl-parent</artifactId>
+        <version>1.2</version>
+    </parent>
+
+    <groupId>com.hermes</groupId>
+    <artifactId>hermes</artifactId>
+    <version>1.0.0</version>
+
+    <packaging>pom</packaging>
+
+
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <org.springframework.session.redis>2.0.5.RELEASE</org.springframework.session.redis>
+        <org.springframework.cloud.hystrix>2.0.1.RELEASE</org.springframework.cloud.hystrix>
+        <org.springframework.cloud.hystrix.dashboard>2.0.1.RELEASE</org.springframework.cloud.hystrix.dashboard>
+        <org.springframework.cloud.openfeign>2.0.1.RELEASE</org.springframework.cloud.openfeign>
+        <org.springframework.cloud.netflix.zuul>2.0.1.RELEASE</org.springframework.cloud.netflix.zuul>
+        <org.springframework.cloud.oauth2>2.0.0.RELEASE</org.springframework.cloud.oauth2>
+        <org.springframework.test>5.0.8.RELEASE</org.springframework.test>
+        <org.springframework.security>5.0.7.RELEASE</org.springframework.security>
+        <org.springframework.kafka>2.1.8.RELEASE</org.springframework.kafka>
+        <org.springframework.cloud.eureka.client>2.0.1.RELEASE</org.springframework.cloud.eureka.client>
+        <org.springframework.boot>2.0.4.RELEASE</org.springframework.boot>
+        <com.sinoiov.clwbd.starter.config>2.2.0</com.sinoiov.clwbd.starter.config>
+
+        <commons.io>2.6</commons.io>
+        <org.apache.httpcomponents>4.5.6</org.apache.httpcomponents>
+        <org.json>20090211</org.json>
+        <org.apache.kafka>1.0.2</org.apache.kafka>
+        <com.caucho.hessian>4.0.38</com.caucho.hessian>
+        <org.bouncycastle.bcprov-jdk15on>1.60</org.bouncycastle.bcprov-jdk15on>
+        <org.projectlombok.lombok>1.18.0</org.projectlombok.lombok>
+        <commons-beanutils>1.9.3</commons-beanutils>
+        <com.google.guava>26.0-jre</com.google.guava>
+        <org.apache.commons.commons.lang3>3.7</org.apache.commons.commons.lang3>
+        <redis.clients>2.9.0</redis.clients>
+        <junit>4.12</junit>
+        <org.apache.poi>3.9</org.apache.poi>
+        <dom4j>1.6.1</dom4j>
+        <com.alibaba.fastjson>1.2.36</com.alibaba.fastjson>
+        <org.redisson>1.0.2</org.redisson>
+        <com.auth0>3.3.0</com.auth0>
+
+        <org.mybatis.spring.boot>1.3.2</org.mybatis.spring.boot>
+        <org.mybatis.typehandlers>1.0.2</org.mybatis.typehandlers>
+        <org.mybatis.generator>1.3.5</org.mybatis.generator>
+        <org.mybatis>1.3.2</org.mybatis>
+
+        <com.github.pagehelper>1.2.8</com.github.pagehelper>
+        <mysql>5.1.46</mysql>
+        <com.belerweb.pinyin4j>2.5.0</com.belerweb.pinyin4j>
+
+        <io.springfox.swagger2>2.7.0</io.springfox.swagger2>
+        <net.sourceforge.pinyin4j>2.5.0</net.sourceforge.pinyin4j>
+
+        <com.alibaba.druid.starter>1.1.9</com.alibaba.druid.starter>
+
+        <com.xuxueli.xxl.job.core>2.0.2</com.xuxueli.xxl.job.core>
+
+        <drools.version>7.2.0.Final</drools.version>
+
+        <com.fasterxml.jackson>2.10.1</com.fasterxml.jackson>
+
+        <build.dir>src/main/build</build.dir>
+
+        <commons-collections>3.2.2</commons-collections>
+
+        <org.slf4j>1.7.30</org.slf4j>
+
+    </properties>
+
+    <!--依赖版本管理-->
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${com.fasterxml.jackson}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${org.slf4j}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-base</artifactId>
+                <version>${com.fasterxml.jackson}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${com.fasterxml.jackson}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${com.xuxueli.xxl.job.core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${com.alibaba.druid.starter}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sourceforge.pinyin4j</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${net.sourceforge.pinyin4j}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${io.springfox.swagger2}</version>
+            </dependency>
+
+            <!-- swagger2-UI-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${io.springfox.swagger2}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${org.springframework.cloud.eureka.client}</version>
+            </dependency>
+
+            <!-- 配置中心客户端，自动刷新配置中心更改的配置 -->
+            <dependency>
+                <groupId>com.sinoiov.clwbd</groupId>
+                <artifactId>clwbd-spring-cloud-starter-config</artifactId>
+                <version>${com.sinoiov.clwbd.starter.config}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <scope>runtime</scope>
+                <version>${mysql}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${org.springframework.test}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId>
+                <version>${org.springframework.session.redis}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${org.springframework.cloud.hystrix}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+                <version>${org.springframework.cloud.hystrix.dashboard}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${org.springframework.cloud.openfeign}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+                <version>${org.springframework.cloud.netflix.zuul}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <scope>provided</scope>
+                <version>${org.springframework.cloud.oauth2}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${org.mybatis.spring.boot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-typehandlers-jsr310</artifactId>
+                <version>${org.mybatis.typehandlers}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${org.mybatis}</version>
+            </dependency>
+
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${com.github.pagehelper}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-core</artifactId>
+                <version>${org.mybatis.generator}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${com.auth0}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${org.redisson}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${com.alibaba.fastjson}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${org.apache.httpcomponents}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${org.apache.httpcomponents}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${org.json}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${org.springframework.security}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${org.springframework.security}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${com.caucho.hessian}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${org.bouncycastle.bcprov-jdk15on}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${com.google.guava}</version>
+            </dependency>
+            <!--拼音包-->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${com.belerweb.pinyin4j}</version>
+            </dependency>
+            <!--常用工具类 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${org.apache.commons.commons.lang3}</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${redis.clients}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit}</version>
+            </dependency>
+            <!-- excel工具 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${org.apache.poi}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${org.springframework.kafka}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${org.apache.kafka}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org.projectlombok.lombok}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${org.springframework.boot}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>PRO_GH</id>
+            <properties>
+                <env>prod</env>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.tld</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/lib</directory>
+                <targetPath>extralibs</targetPath>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>com/**/*.*</include>
+                        <include>META-INF/**/*.*</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

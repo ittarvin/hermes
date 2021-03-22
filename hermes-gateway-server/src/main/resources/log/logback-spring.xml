@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+	<conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+	<conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
+	<springProperty scope="context" name="appName" source="spring.application.name"/>
+
+	<!-- 彩色日志格式 -->
+	<property name="LOG_PATTERN"
+			  value="%blue([%d{yyyy-MM-dd HH:mm:ss.SSSZ}]) %magenta([${appName}]) %cyan([%thread]) %yellow([%level]) %cyan([%logger{15}]) - %green(%m%n)" />
+	<property name="NO_COLOR_LOG_PATTERN"
+			  value="[%d{yyyy-MM-dd HH:mm:ss.SSSZ}] [${appName}] [%thread] [%level] [%logger{15}] - %m%n" />
+
+	<property name="LOG_HOME" value="/logs/web_app/${appName}" />
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${appName}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${appName}-%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>1100</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+	<root level="info">
+		<!--<appender-ref ref="FILE" /> -->
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+
+	<appender name="RPC_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${appName}-rpc.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${appName}-rpc-%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>90</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<logger level="INFO" name="com.ydwf.cloud.framework.interceptor.rpc" additivity="false">
+		<appender-ref ref="RPC_FILE" />
+	</logger>
+
+
+</configuration>
