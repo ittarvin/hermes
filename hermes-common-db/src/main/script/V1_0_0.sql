@@ -4,51 +4,6 @@ CREATE DATABASE IF NOT EXISTS hermes DEFAULT CHARSET utf8 COLLATE utf8_general_c
 
 use hermes;
 
-
-#平台客户信息表
-CREATE TABLE `tb_platform_client` (
-  `id` int(12) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
-  `create_user` varchar(32) NOT NULL COMMENT '创建用户',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
-  `update_user` varchar(32) DEFAULT NULL COMMENT '更新用户',
-  `client_name` varchar(40) NOT NULL COMMENT '客户名称',
-  `client_phone` varchar(20) NOT NULL COMMENT '手机号',
-  `user_id` varchar(40) NOT NULL COMMENT '用户userId',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB COMMENT='平台客户信息表';
-
-
-#平台频道信息表
-CREATE TABLE `tb_platform_channel` (
-  `id` int(12) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
-  `create_user` varchar(32) NOT NULL COMMENT '创建用户',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
-  `update_user` varchar(32) DEFAULT NULL COMMENT '更新用户',
-  `channel_name` varchar(40) NOT NULL COMMENT '频道名称',
-  `channel_status` int(1) NOT NULL COMMENT '频道状态：0 启用，1 未启用',
-  `channel_sort` int(2) NOT NULL COMMENT '频道排序',
-  `channel_page_addr` varchar(500) NOT NULL COMMENT '频道页面地址',
-  `channel_data_addr` varchar(500) NOT NULL COMMENT '频道数据同步地址',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB COMMENT='平台频道信息表';
-
-
-
-#平台频道信息与客户关系表
-CREATE TABLE `tb_platform_client_channel` (
-  `id` int(12) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
-  `create_user` varchar(32) NOT NULL COMMENT '创建用户',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
-  `update_user` varchar(32) DEFAULT NULL COMMENT '更新用户',
-  `channel_id` int(12) NOT NULL COMMENT '频道Id',
-  `user_id` varchar(40) NOT NULL COMMENT '用户Id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB COMMENT='平台频道信息与客户关系表';
-
-
 #平台用户表
 CREATE TABLE `tb_platform_user` (
   `id` int(12) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
@@ -100,7 +55,8 @@ CREATE TABLE `tb_admin_menu` (
   `create_user` varchar(32) NOT NULL COMMENT '创建用户',
   `update_date` datetime DEFAULT NULL COMMENT '更新时间',
   `update_user` varchar(32) DEFAULT NULL COMMENT '更新用户',
-  `menu_name` varchar(40) NOT NULL COMMENT '菜单名称',
+  `menu_name` varchar(40) NOT NULL COMMENT '菜单、按钮 名称',
+  `menu_addr` varchar(500) DEFAULT NULL COMMENT '菜单地址',
   `menu_type` int(1) NOT NULL COMMENT '菜单类型 0 导航菜单，1 按钮事件',
   `menu_pid` varchar(40) NOT NULL COMMENT '上级id',
   PRIMARY KEY (`id`) USING BTREE
