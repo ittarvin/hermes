@@ -3,16 +3,16 @@
 设计文档地址 ：https://xie.infoq.cn/article/f77e07fd645f8a8bc1979fa09
 
 
-##2021-03-29
-新增 AOP 日志拦截器注解
+## 2021-03-29
+   新增 hermes-aop-log-starter 日志拦截器模块
 
-引用方式：
-```java
-@FeignLog(model = "", optType = OptTypeEnum.MODIFY, desc = "", systemName = SystemTypeEnum.SERVICE)
-```
-
-新增注解
+第一步：声明注解扫描
 ```java
 @EnableFeignClients({"com.hermes.log"})
 @ComponentScan({"com.hermes.log"})
+```
+
+第二部：Controller 请求方法上配置引用
+```java
+@FeignLog(model = "", optType = OptTypeEnum.MODIFY, desc = "", systemName = SystemTypeEnum.SERVICE)
 ```
