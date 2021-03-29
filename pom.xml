@@ -11,6 +11,7 @@
         <module>hermes-common-kit</module>
         <module>hermes-gateway-server</module>
         <module>hermes-outside-server</module>
+        <module>hermes-aop-log-starter</module>
     </modules>
 
     <groupId>com.hermes</groupId>
@@ -83,12 +84,45 @@
 
         <org.slf4j>1.7.30</org.slf4j>
 
+        <org.springframework>5.0.8.RELEASE</org.springframework>
+
     </properties>
 
     <!--依赖版本管理-->
     <dependencyManagement>
 
         <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-openfeign-core</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${org.springframework}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-netflix-core</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-netflix</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
@@ -143,14 +177,22 @@
                 <artifactId>springfox-swagger2</artifactId>
                 <version>${io.springfox.swagger2}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${org.springframework}</version>
+            </dependency>
             <!-- swagger2-UI-->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${io.springfox.swagger2}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${org.springframework.boot}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
