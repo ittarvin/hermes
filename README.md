@@ -4,7 +4,7 @@
 
 
 ## 2021-03-29
-新增 hermes-aop-log-starter 日志拦截器模块
+ 新增 hermes-aop-log-starter 日志拦截器模块
 第一步：声明注解扫描
 ```java
 @EnableFeignClients({"com.hermes.log"})
