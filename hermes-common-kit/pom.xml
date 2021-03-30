@@ -6,7 +6,6 @@
         <artifactId>hermes</artifactId>
         <groupId>com.hermes</groupId>
         <version>1.0.0</version>
-        <relativePath>../hermes/pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
