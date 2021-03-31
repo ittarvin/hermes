@@ -39,6 +39,11 @@ public class FeignLogStarterAOP {
     @Resource
     private LogInterfaceFeignClient logInterfaceFeignClient;
 
+    public FeignLogStarterAOP(){
+        logger.info("初始化 FeignLog AOP 声明");
+    }
+
+
     /**
      * 切点连接点：在BXCXFeignLog注解的位置切入
      */
