@@ -27,3 +27,30 @@
   <version>1.0.0</version>
 </dependency>
 ```
+
+## 2021-04-07
+新增 hermes-rocketmq-starter 消息中间件
+- 版本：rocketmq-all-4.8.0-source-release.zip （RocketMQ-vs-ActiveMQ-vs-Kafka 参考）
+```
+RocketMQ-vs-ActiveMQ-vs-Kafka.png
+```
+
+- 安装方法参考 http://rocketmq.apache.org/docs/quick-start/ 源文件方式安装
+- 前置安装 maven 
+```
+yum install maven
+```
+- 安装 rocketmq
+```
+unzip rocketmq-all-4.8.0-source-release.zip
+cd rocketmq-all-4.8.0-source-release/
+mvn -Prelease-all -DskipTests clean install -U
+```
+- rocketmq-client 4.3.0
+```
+<dependency>
+    <groupId>org.apache.rocketmq</groupId>
+    <artifactId>rocketmq-client</artifactId>
+    <version>4.3.0</version>
+</dependency>
+```
