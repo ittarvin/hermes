@@ -1,6 +1,5 @@
-package com.hermes.log.factory;
+package com.hermes.log;
 
-import com.hermes.log.FeignLog;
 import com.hermes.log.aop.FeignLogStarterAOP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
