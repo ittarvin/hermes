@@ -36,6 +36,7 @@ RocketMQ-vs-ActiveMQ-vs-Kafka.png
 ```
 
 - 安装方法参考 http://rocketmq.apache.org/docs/quick-start/ 源文件方式安装
+- 架构文档参考 http://rocketmq.apache.org/docs/rmq-arc/  
 - 前置安装 maven 
 ```
 yum install maven
@@ -45,6 +46,34 @@ yum install maven
 unzip rocketmq-all-4.8.0-source-release.zip
 cd rocketmq-all-4.8.0-source-release/
 mvn -Prelease-all -DskipTests clean install -U
+```
+- copy rocketmq-4.8.0.zip 到  /opt/soft/
+```
+  cd rocketmq-all-4.8.0-source-release/distribution/target/rocketmq-4.8.0
+  cp rocketmq-4.8.0.zip /opt/soft/ 
+  cd /opt/soft/
+  unzip rocketmq-4.8.0.zip  
+```
+- 启动 rocketmq （Start Name Server）
+```
+cd /opt/soft/rocketmq-4.8.0/bin
+nohup sh mqnamesrv &
+tail -fn 100 ~/logs/rocketmqlogs/namesrv.log
+```
+- 启动 rocketmq （Start Broker）
+```
+nohup sh mqbroker -n localhost:9876 &
+tail -f ~/logs/rocketmqlogs/broker.log
+```
+- Rocketmq Broker 异常处理 新建对应目录即可
+ ```
+Error when measuring disk space usage, file doesn't exist on this path: /root/store/consumequeue
+Error when measuring disk space usage, file doesn't exist on this path: /root/store/commitlog
+``` 
+- 停止服务
+```
+sh bin/mqshutdown broker
+sh bin/mqshutdown namesrv
 ```
 - rocketmq-client 4.3.0
 ```
